@@ -21,4 +21,14 @@ class Article extends JsonResource
             'body' => $this->body,
         ];
     }
+
+    public function with($request)
+    {
+        // return parent::toArray($request);
+        return [
+            'version' => '1.0.1',
+            'author_url' => url('https://www.orderine.com'),
+        ];
+    }
+
 }
