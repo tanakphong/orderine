@@ -16,7 +16,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::paginate(15);
+        $articles = Article::orderBy('created_at','desc')->paginate(5);
 
         return ArticleResource::collection($articles);
     }
@@ -51,18 +51,6 @@ class ArticleController extends Controller
         $article = Article::findOrFail($id);
 
         return new ArticleResource($article);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
     }
 
     /**
